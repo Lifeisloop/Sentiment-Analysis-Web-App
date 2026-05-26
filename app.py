@@ -20,6 +20,7 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
+
 .main {
     background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
@@ -48,7 +49,7 @@ st.markdown("""
     font-size: 18px;
 }
 
-.stButton>button {
+.stButton > button {
     width: 100%;
     height: 60px;
     font-size: 22px;
@@ -60,23 +61,41 @@ st.markdown("""
 }
 
 .result-card {
-    padding: 25px;
+    padding: 30px;
     border-radius: 20px;
     text-align: center;
-    font-size: 28px;
+    font-size: 34px;
     font-weight: bold;
     margin-top: 30px;
-}
-
-.positive {
-    background: linear-gradient(90deg, #16a34a, #22c55e);
     color: white;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
 }
 
-.negative {
+/* Emotion Colors */
+.anger {
     background: linear-gradient(90deg, #dc2626, #ef4444);
-    color: white;
 }
+
+.fear {
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+.joy {
+    background: linear-gradient(90deg, #eab308, #facc15);
+}
+
+.love {
+    background: linear-gradient(90deg, #db2777, #ec4899);
+}
+
+.sadness {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+}
+
+.surprise {
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -117,19 +136,19 @@ if st.button("Predict"):
         prediction = model.predict(transformed)
 
         emotion_dict = {
-            0: ("😡 ANGER", "#ff4b4b"),
-            1: ("😨 FEAR", "#9b59b6"),
-            2: ("😊 JOY", "#2ecc71"),
-            3: ("❤️ LOVE", "#e91e63"),
-            4: ("😢 SADNESS", "#f1c40f"),
-            5: ("😲 SURPRISE", "#3498db")
+            0: ("😡 ANGER", "anger"),
+            1: ("😨 FEAR", "fear"),
+            2: ("😊 JOY", "joy"),
+            3: ("❤️ LOVE", "love"),
+            4: ("😢 SADNESS", "sadness"),
+            5: ("😲 SURPRISE", "surprise")
         }
 
-        emotion, css_class = emotion_dict[int(prediction[0])]
+        emotion, css_class = emotion_dict[prediction[0]]
 
         st.markdown(
-            f'<div class="result-card {css_class}">{emotion}</div>',
-            unsafe_allow_html=True
+        f'<div class="result-card {css_class}">{emotion}</div>',
+        unsafe_allow_html=True
         )
 
 # Footer
