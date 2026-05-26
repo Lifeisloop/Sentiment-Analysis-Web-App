@@ -117,12 +117,12 @@ if st.button("Predict"):
         prediction = model.predict(transformed)
 
         emotion_dict = {
-            0: ("😡 ANGER", "negative"),
-            1: ("😨 FEAR", "negative"),
-            2: ("😊 JOY", "positive"),
-            3: ("❤️ LOVE", "positive"),
-            4: ("😢 SADNESS", "negative"),
-            5: ("😲 SURPRISE", "positive")
+            0: ("😡 ANGER", "#ff4b4b"),
+            1: ("😨 FEAR", "#9b59b6"),
+            2: ("😊 JOY", "#2ecc71"),
+            3: ("❤️ LOVE", "#e91e63"),
+            4: ("😢 SADNESS", "#f1c40f"),
+            5: ("😲 SURPRISE", "#3498db")
         }
 
         emotion, css_class = emotion_dict[int(prediction[0])]
