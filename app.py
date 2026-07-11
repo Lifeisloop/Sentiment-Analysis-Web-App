@@ -1,10 +1,6 @@
 import streamlit as st
 import pickle
-import re
-import nltk
-from nltk.corpus import stopwords
-
-nltk.download('stopwords')
+import string
 
 #load model
 model = pickle.load(open('emotion_model.pkl', 'rb'))
@@ -103,9 +99,17 @@ st.markdown("""
 st.title("Sentiment Analysis Web App")
 st.write("Enter text to check sentiment")
 
-#Cleaning function
+#Cleaning function matching the training notebook
 def clean_text(text):
-    return text.lower()
+    # Lowercase
+    text = text.lower()
+    # Remove punctuation
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    # Remove numbers
+    text = ''.join([c for c in text if not c.isdigit()])
+    # Remove emojis (keep ASCII only)
+    text = ''.join([c for c in text if c.isascii()])
+    return text
 
 # Layout
 col1, col2 = st.columns([2, 1])
