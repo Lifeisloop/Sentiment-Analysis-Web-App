@@ -54,6 +54,8 @@ The model is trained on a labeled dataset (`train.txt`) containing 16,000 senten
 ```text
 NLP-Project/
 ├── venv/                  # Local Python Virtual Environment
+├── screenshots/           # Application screenshots for demonstration
+│   └── app_screenshot.png # Main application screenshot
 ├── app.py                 # Streamlit Web Application
 ├── models.ipynb           # Model Training Jupyter Notebook
 ├── requirements.txt       # App Python Dependencies
@@ -62,6 +64,13 @@ NLP-Project/
 ├── train.txt              # Dataset file
 └── README.md              # Project Documentation
 ```
+
+---
+
+## Screenshots
+
+### Application UI & Emotion Prediction
+![Sentiment Analysis App UI](screenshots/app_screenshot.png)
 
 ---
 
